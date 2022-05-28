@@ -69,7 +69,8 @@ Analysis :-
 
 3.Cat-plot
 
-Line-plot
+4.Line-plot
+
 
 3.Heat-Map
 
@@ -82,6 +83,7 @@ Q2: Has production of SUVs increased over the years
 Q3: Which brand is least popular and which one is most popular?
 
 Conclusion :-
+
 1.Our analysis shows that Price of the car positively correlates with higher Engine specifications like more horsepower.
 
 2.Using the above conclusion we can also form a linear relationship between the variables to predict price of the car based on engine specifications.
