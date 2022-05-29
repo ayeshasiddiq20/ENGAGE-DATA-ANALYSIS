@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENGAGE-DATA-ANALYSIS</title>
+
+
+
+  <!-- External style-sheet -->
+  <link rel="stylesheet" type="text/css" href="{% static "css/engage.css" %}">
+
+  <style>
+    img{
+      width: 1000px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body class="header" style="width: 100%; height:fit-content;">
+  <header class="top-header">
+  
+  </header>
+
+<div class="histo-content">
+  <div class="histo-heading heading "><h1> Histogram & Bar-Graphs </h1></div>
+  <div class="histo-txt"><p>
+    Histogram refers to the frequency of occurrence of variables in an interval.
+    In this case, there are mainly 10 different types of car manufacturing companies, but it is often important to know
+    who has the most number of cars.
+    To do this histogram is one of the trivial solutions which lets us know the total number of car manufactured by a
+    different company. </p>
+    <div class="histo-img">
+    <img id="hist" style="display:none" id ="hist" src="">
+    
+    {% block hist %}
+    <a href="/gen_hist">
+      <img src="data:image/png;base64,{{ graphic|safe }}" style = "display:none">
+      <div class="histo-button">
+  <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('hist')" > click
+  </button>
+    </a>
+    {% endblock hist %}
+  </div>
+</div>
+  
+  <h2> Total Number Of Car manufactured by a different company.</h2>
+    <img id="val_counts" style="display:none" id ="val_counts" src="">
+    {% block val_counts %}
+    <a href="/gen_val_counts">
+   <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('val_counts')" > click
+  </button>
+    </a>
+  {% endblock val_counts %}
+  <img src="data:image/png;base64,{{ graphic|safe }}"  style = "display: none;">
+   
+
+  <h2>Top 10 manufacturers (Number of cars produced) </h2>
+  <img id="top_ten" style="display:none" id ="top_ten" src="">
+  {% block top_ten %}
+   <a href="/gen_top_ten">
+  <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('image')" > click
+  </button>
+    </a>
+    {% endblock top_ten %}
+  <img src="data:image/png;base64,{{ graphic|safe }}"  style = "display: none;">
+   <P>From the above bar plot we can infer that most of the people buy cars from Chevrolet,
+    Ford, Toyota and Volkswagen as they produce more economical cars which can affored by more people. </P>
+   
+
+
+  <h2>Cars produced over the years</h2>
+    {% block year_plot %}
+    <a href="/gen_year_plot">
+      <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('year_plot')" > click
+      </button>
+    </a>
+    {% endblock year_plot %}
+   <p>
+    From the above chart we can see that cars production has increased over the years.
+    In year 2017 though, we see a dip in the number of cars produced.
+    It could also be because of incomplete data for 2017.
+  </p>
+  
+
+
+  <h2>Fuel types per Year</h2>
+
+  <img id="fuel_type" style="display:none" id ="fuel_type" src="">
+ {% block fuel_type %}
+    <a href="/gen_fuel_type">
+  <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('fuel_type')" > click
+  </button>
+    </a>
+  {% endblock fuel_type %}
+  <img src="data:image/png;base64,{{ graphic|safe }}"  style = "display: none;">
+
+</div>
+</div>
+</div>
+ 
+
+
+
+
+<div class="plot-content">
+<div class="heading"> <h1>Plots & It's Types</h1></div>
+
+<div class="plot1">  <h2>Scatter-Plot</h2>
+<p>We generally use scatter plots to find the correlation between two variables.
+  Here the scatter plots are plotted between Horsepower and Price and we can see the plot below.</p>
+<img id="image" style="display:none" id ="image" src="">
+  {% block content %}
+  <a href="/gen_scatter">
+    <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('image')" > click
+</button>
+  </a>
+  {% endblock content %}
+
+
+
+<div class="plot2"><h2> Violin-plot </h2>
+  <img id="violin" style="display:none" id ="violin" src="">
+
+  {% block violin %}
+  <a href="/gen_violin">
+    <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('violin')" > click
+</button>
+  </a>
+  {% endblock violin %}
+  <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none;">
+
+</div>
+</div>
+
+
+<div class="plot3"> <h2>Cat-Plot</h2></div>
+<img id="cat" style="display:none" id ="cat" src="">
+
+  {% block cat %}
+  <a href="/gen_cat">
+    <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('cat')" > click
+</button>
+  </a>
+  {% endblock cat %}
+  <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none;">
+ 
+
+
+
+
+</div>
+
+  
+<div class="maps-content">
+  <div class="heading">
+    <h1>Heatmaps</h1>
+  </div>
+  <div class="maps-txt">
+    <p>Heat Maps is a type of plot which is necessary when we need to find the dependent variables.
+        One of the best way to find the relationship between the features can be done using heat maps.
+        In the below heat map we know that the price feature depends mainly on the Engine Size, Horsepower, and Cylinders.
+      </p>
+    </div>
+    <div class="maps-img"></div>
+
+  {% block heat_map %}
+  
+  <a href="/gen_heat_map">
+  <div class="button"><button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('heat_map ')" > click
+</button> </div>
+  </a>
+  {% endblock heat_map %}
+  <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none;">
+  
+ 
+</div>
+
+ 
+  <div class="analyse-content">
+    <div class="heading"><h1>LET'S ANALYSE & ANSWER !!</h1></div>
+    <div class="analyse-item">
+     
+      <h3> Q1.Has use of diesel cars increased or decresed over the years ?</h3>
+       
+       <div class="img">
+     <img id="diesel_car" style="display:none;" id ="diesel_car" src="" >
+   
+     {% block diesel_car %}
+     
+     <a href="/gen_diesel_car">
+    <div class="button"> 
+   <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('diesel')" > click
+   </button>
+   </div>
+     </a>
+     {% endblock diesel_car %}
+     <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none; width:1000px">
+     
+     </div>
+      <P>Use of diesel cars increased steadily from 2010 to 2015. Thereafter, the usage has gone down drastically which
+       could be attributed to the stricter pollution laws coming in.</P>
+      </div>
+
+
+    <div class="analyse-item"><h3> Q2.Has production of SUVs increased over the years?</h3>
+      <img id="suv_year" style="display:none" id ="suv_year" src="">
+  
+    {% block suv_year %}
+    <div class="BUTTON">
+     <a href="/gen_suv_year">
+    <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('suv_year')" > click
+  </button>
+  </div>
+    </a>
+    {% endblock suv_year %}
+    <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none;">
+    <p>
+        From the graph we can cleary see that SUV production has gone up significantly as compared to previous decades.
+      </p>
+  </div>
+
+<div class="analyse-item">  <h3>Q3.Which brand is least popular and which one is most popular?</h3>
+  <img id="brand_car" style="display: none;width:1000px" id ="brand_car" src="">
+
+  {% block brand_car %}
+  
+  <a href="/gen_brand_car">
+    <div class="button">
+      <button class="btn" style="padding: 5px ; background-color: azure;" onclick="showImg('')" > click
+    </button>
+  </a> 
+</div>
+  {% endblock brand_car %}
+  <img src="data:image/png;base64, {{ graphic|safe }}" style="display: none;">
+  <p>Spyker is least popular and Ford is most popular brand.</p></div>
+
+    
+    
+
+</div>
+
+
+ <div class="conclusion-content ">
+   <div class="heading conclusion-item conclusion-heading"><h1>Conclusion</h1></div>
+   <div class="conclusion-txt conclusion-item"><p>
+    <ol>
+      <li> Our analysis shows that Price of the car positively correlates with higher Engine specifications like more
+        horsepower.</li>
+  
+      <li>Using the above conclusion we can also form a linear relationship between the variables to predict price of the
+        car based on engine specifications.</li>
+  
+      <li>The use of E85 fuel has gone up over the years as green initiatives have picked up the pace. More people prefer
+        greener alternatives now.</li>
+  
+      <li>Production of SUVs increased rapidly in last few years.</li>
+  
+      <li>Ford is the most popular brand in the world but Chevrolet produced most cars.</li>
+    </ol>
+    </p></div>
+ </div>
+
+  
+  
+ 
+
+
+  <script>
+function showImg(idtag)
+{
+  var img="data:image/png;base64,{{ graphic|safe }}";
+  var id = idtag;
+ var element =document.getElementById(id)
+ element.src=img.replace('100*100','200*200')
+ element.style.display="inline"
+}
+
+  </script>
+
+
+
+</body>
+
+</html>
